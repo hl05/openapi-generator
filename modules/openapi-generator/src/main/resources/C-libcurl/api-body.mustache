@@ -290,7 +290,7 @@ end:
     listEntry_t *{{paramName}}BodyListEntry;
     list_ForEach({{paramName}}BodyListEntry, {{paramName}})
     {
-        localVar_{{paramName}} = {{#items}}{{complexType}}{{/items}}_convertToJSON({{paramName}}BodyListEntry->data);
+        localVar_{{paramName}} = {{#isPrimitiveType}}{{dataType}}{{/isPrimitiveType}}{{^isPrimitiveType}}{{complexType}}{{/isPrimitiveType}}_convertToJSON({{paramName}}BodyListEntry->data);
         if(localVar_{{paramName}} == NULL)
         {
             goto end;
